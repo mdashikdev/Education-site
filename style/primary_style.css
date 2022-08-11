@@ -526,9 +526,6 @@ header h1{
     font-size: 16px;
 }
 
-i:hover{
-    color: white;
-}
 
 .post_only_question textarea:focus{
     border: 1px solid var(--primary-color--);
