@@ -87,22 +87,48 @@ $(".form_question_with_ans").on("submit",function(){
     })
 })
 
-//Show Questions
+
+
+
+$("#sortitem").on("change",function(){
+    let val=this.value;
+
+    if (val == "recentPost") {
+        show_questoins();
+    }else if (val == "mostliked") {
+        mostLiked();
+    }
+    else{
+        $("#popular_questions_container").html("response");
+    }
+    
+})
+show_questoins();
+//Sort questions most liked
+function mostLiked() {
+    $.ajax({
+        url: "php/php_core.php",
+        type:"POST",
+        data:{this_if_for_sort_most_liked:"this_if_for_sort_most_liked"},
+        success:function(res){
+            $("#popular_questions_container").html(res);
+        }
+    })
+}
+
+//Recent
 function show_questoins(){
     $.ajax({
         url:"php/php_core.php",
         type:"POST",
         data:{this_is_for_show_questions:'this_is_for_show_questions'},
-        beforeSend:function(){
-
-        },
         success:function(response){
             $("#popular_questions_container").html(response);
         }
     })
 }
 
-show_questoins();
+
 
 // ===Question search===
 $(".question_search_input").on("focus",function(){

@@ -109,9 +109,17 @@
                     </form>
                     <div class="search_result_container">search result</div>
                     <div class="questions_container" style="positation:relative">
-                        <span class="questions_container_head">New Questions</span>
+                        <div class="sort_question_section">
+                            <span class="questions_container_head">New Questions</span>
+                            <select name="sortitem" id="sortitem">
+                                <option value="recentPost">Recent posts</option>
+                                <option value="mostliked">Most liked</option>
+                                <option value="following_people">Following people</option>
+                            </select>
+                        </div>
+                        
 
-
+                        
                         <?php
                         $question_query=mysqli_query($conn,"SELECT * FROM questions ORDER BY id DESC");
                         $all_userquery=mysqli_query($conn,"SELECT * FROM users ORDER BY id DESC");
